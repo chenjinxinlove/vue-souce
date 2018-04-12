@@ -199,6 +199,7 @@ export function toObject (arr: Array<any>): Object {
 
 /**
  * Perform no operation.
+ * 执行任何操作
  */
 export function noop () {}
 

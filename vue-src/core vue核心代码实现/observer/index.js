@@ -127,6 +127,7 @@ export function observe (value: any, asRootData: ?boolean): Observer | void {
 
 /**
  * Define a reactive property on an Object.
+ * 在对象上定义一个反应性属性。
  */
 export function defineReactive (
   obj: Object,
@@ -217,8 +218,10 @@ export function set (target: Array<any> | Object, key: any, val: any): any {
 
 /**
  * Delete a property and trigger change if necessary.
+ * 删除对象的属性。如果对象是响应式的，确保删除能触发更新视图。这个方法主要用于避开 Vue 不能检测到属性被删除的限制，但是你应该很少会使用它。
  */
 export function del (target: Array<any> | Object, key: any) {
+  // 2.2.0+ 版本中支持 Array + index 用法。
   if (Array.isArray(target) && typeof key === 'number') {
     target.splice(key, 1)
     return
@@ -234,6 +237,7 @@ export function del (target: Array<any> | Object, key: any) {
   if (!hasOwn(target, key)) {
     return
   }
+  //删除那个属性
   delete target[key]
   if (!ob) {
     return

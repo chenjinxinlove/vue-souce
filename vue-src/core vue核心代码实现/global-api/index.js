@@ -7,6 +7,9 @@ import { initExtend } from './extend'
 import { initAssetRegisters } from './assets'
 import { set, del } from '../observer/index'
 import { ASSET_TYPES } from 'shared/constants'
+// 'component',
+// 'directive',
+// 'filter'
 import builtInComponents from '../components/index'
 
 import {
@@ -16,7 +19,7 @@ import {
   mergeOptions,
   defineReactive
 } from '../util/index'
-
+//把vue的实例传入
 export function initGlobalAPI (Vue: GlobalAPI) {
   // config
   const configDef = {}
@@ -28,8 +31,9 @@ export function initGlobalAPI (Vue: GlobalAPI) {
       )
     }
   }
+  //把configDef设到vue上  get属性  Vue.config
   Object.defineProperty(Vue, 'config', configDef)
-
+  
   // exposed util methods.
   // NOTE: these are not considered part of the public API - avoid relying on
   // them unless you are aware of the risk.
@@ -52,7 +56,7 @@ export function initGlobalAPI (Vue: GlobalAPI) {
   // this is used to identify the "base" constructor to extend all plain-object
   // components with in Weex's multi-instance scenarios.
   Vue.options._base = Vue
-
+  //把keep-live加载到Vue.options.components
   extend(Vue.options.components, builtInComponents)
 
   initUse(Vue)
