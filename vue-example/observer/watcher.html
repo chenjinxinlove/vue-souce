@@ -12,10 +12,13 @@
 		b: 2,
 		c: 3
     }
-    debugger;
-	Object.keys(obj).forEach(function(key){
-		new Observer(obj, key, obj[key])
-	});
+    // debugger;
+	// Object.keys(obj).forEach(function(key){
+	// 	new Observer(obj, key, obj[key])
+    // });
+    set({
+        
+    })
 	new Watcher(function(){
 		document.querySelector("#test").innerHTML = obj.a;
 	})
